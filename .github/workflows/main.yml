@@ -1,0 +1,48 @@
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: 初始化环境
+        uses: actions/checkout@main
+
+      - name: 下载
+        run: |
+          curl -L -o convert.py "https://raw.githubusercontent.com/hosxy/anti-ad-rules/refs/heads/master/convert.py"
+          curl -L -o reject-list.txt "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt"
+
+          version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
+          curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz"
+          tar -xf sing-box.tgz
+          cp sing-box-${version}-linux-amd64/sing-box sing-box
+          
+      - name: 转换成源文件格式
+        run: |
+          python convert.py reject-list
+
+      - name: 转换成 二进制规则文件
+        run: |
+          sing-box rule-set compile reject-list.json
+
+      - name: 发布
+        run: |
+          mkdir srs
+          cd srs
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b srs
+          
+          cp ../reject-list.json ad.json
+          cp ../reject-list.srs ad.srs
+
+          git add .
+          git commit -m "Released on ${{ env.BUILDTIME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin srs
