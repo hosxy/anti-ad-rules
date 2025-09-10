@@ -38,6 +38,7 @@ jobs:
 
       - name: 发布
         run: |
+          echo "BUILDTIME=$(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M')" >> $GITHUB_ENV
           mkdir srs
           cd srs
           git init
