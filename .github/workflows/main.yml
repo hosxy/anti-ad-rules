@@ -21,6 +21,7 @@ jobs:
         run: |
           curl -L -o convert.py "https://raw.githubusercontent.com/hosxy/anti-ad-rules/refs/heads/master/convert.py"
           curl -L -o reject-list.txt "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt"
+          curl -L -o proxy.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/refs/heads/source/proxy.txt"
 
           version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
           curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz"
@@ -31,10 +32,12 @@ jobs:
       - name: 转换成源文件格式
         run: |
           python convert.py reject-list
+          python convert.py proxy
 
       - name: 转换成 二进制规则文件
         run: |
           ./sing-box rule-set compile reject-list.json
+          ./sing-box rule-set compile proxy.json
 
       - name: 发布
         run: |
@@ -48,6 +51,9 @@ jobs:
           
           cp ../reject-list.json ad.json
           cp ../reject-list.srs ad.srs
+          
+          cp ../proxy.json proxy.json
+          cp ../proxy.srs proxy.srs
 
           git add .
           git commit -m "Released on ${{ env.BUILDTIME }}"
