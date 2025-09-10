@@ -1,8 +1,13 @@
-
+name: Build srs files
 on:
   workflow_dispatch:
-  release:
-    types: [published]
+  schedule:
+    - cron: "30 22 * * *" # 6:30 AM UTC+8
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**/README.md"
 
 jobs:
   build:
