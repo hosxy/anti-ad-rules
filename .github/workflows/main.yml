@@ -11,6 +11,11 @@ jobs:
 
       - name: 初始化环境
         uses: actions/checkout@main
+      
+      - name: 安装依赖
+        run: |
+          sudo apt update
+          sudo apt install jq
 
       - name: 下载
         run: |
