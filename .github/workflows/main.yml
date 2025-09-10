@@ -26,7 +26,8 @@ jobs:
           curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz"
           tar -xf sing-box.tgz
           cp sing-box-${version}-linux-amd64/sing-box sing-box
-          
+          sudo chmod a+x sing-box
+
       - name: 转换成源文件格式
         run: |
           python convert.py reject-list
