@@ -34,7 +34,7 @@ jobs:
 
       - name: 转换成 二进制规则文件
         run: |
-          sing-box rule-set compile reject-list.json
+          ./sing-box rule-set compile reject-list.json
 
       - name: 发布
         run: |
