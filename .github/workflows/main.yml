@@ -25,9 +25,9 @@ jobs:
           
       - name: 下载
         run: |
-          curl -L -o convert.py "https://raw.githubusercontent.com/hosxy/anti-ad-rules/refs/heads/master/convert.py"
+          curl -L -o convert.py "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/convert.py"
           curl -L -o reject-list.txt "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt"
-          curl -L -o accelerate.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/refs/heads/source/accelerate.txt"
+          curl -L -o accelerate.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/resource/accelerate.txt"
 
           version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
           curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz"
