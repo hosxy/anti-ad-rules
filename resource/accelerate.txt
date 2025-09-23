@@ -3,3 +3,5 @@ phoronix.com
 python.org
 pypi.org
 pythonhosted.org
+rust-lang.org
+crates.io
