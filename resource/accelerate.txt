@@ -6,3 +6,5 @@ pythonhosted.org
 rust-lang.org
 crates.io
 denx.de
+gnu.org
+sourceware.org
