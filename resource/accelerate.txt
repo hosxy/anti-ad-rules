@@ -5,3 +5,4 @@ pypi.org
 pythonhosted.org
 rust-lang.org
 crates.io
+denx.de
