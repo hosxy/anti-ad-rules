@@ -8,3 +8,4 @@ crates.io
 denx.de
 gnu.org
 sourceware.org
+people.redhat.com
