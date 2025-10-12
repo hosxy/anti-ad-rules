@@ -10,3 +10,4 @@ gnu.org
 sourceware.org
 people.redhat.com
 wikichip.org
+speed.cloudflare.com
