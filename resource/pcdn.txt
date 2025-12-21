@@ -1,0 +1,28 @@
+# bilibili
+mcdn.bilivideo.com
+mcdn.bilivideo.cn
+szbdyd.com
+
+# qq
+p2ptun.qq.com
+p2p.qq.com
+p2pupdate.gamedl.qq.com
+p2pupgrade.gamedl.qq.com
+
+# 斗鱼
+p2pchunk-hw.douyucdn.cn
+p2pchunk-table.douyucdn.cn
+p2pchunk-ws.douyucdn.cn
+p2perrorlog.douyucdn.cn
+p2plive-ali.douyucdn.cn
+p2plive-ws.douyucdn.cn
+p2plog.douyucdn.cn
+p2pvod-ws.douyucdn.cn
+stun.douyucdn.cn
+stun1.douyucdn.cn
+
+# 虎牙
+p2p.huya.com
+
+# 爱奇艺
+tpa-hcdn.iqiyi.com
