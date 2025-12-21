@@ -12,7 +12,9 @@ def convert(file_name:str):
         with open(Path.cwd().joinpath(file_name + ".txt"),"r") as f:
             content = f.read().splitlines()
             for i in content:
-                if i.startswith("full:"):
+                if i.startswith("#"):
+                    continue
+                elif i.startswith("full:"):
                     domain.append(i.split(":",1)[1])
                 elif i.startswith("regexp:"):
                     domain_regex.append(i.split(":",1)[1])
@@ -23,7 +25,9 @@ def convert(file_name:str):
         with open(Path.cwd().joinpath(file_name + ".txt"),"r") as f:
             content = f.read().splitlines()
             for i in content:
-                if i.startswith("full:"):
+                if i.startswith("#"):
+                    continue
+                elif i.startswith("full:"):
                     domain.append(i.split(":",1)[1])
                 elif i.startswith("regexp:"):
                     domain_regex.append(i.split(":",1)[1])
@@ -40,4 +44,5 @@ def convert(file_name:str):
         json.dump(ruleset,f,indent=2)
 
 file_name = sys.argv[1]
+
 convert(file_name)
