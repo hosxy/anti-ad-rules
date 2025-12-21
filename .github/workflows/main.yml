@@ -27,6 +27,7 @@ jobs:
           curl -L -o convert.py "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/convert.py"
           curl -L -o reject-list.txt "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt"
           curl -L -o accelerate.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/resource/accelerate.txt"
+          curl -L -o accelerate.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/resource/pcdn.txt"
 
           version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
           curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz"
@@ -38,11 +39,13 @@ jobs:
         run: |
           python convert.py reject-list
           python convert.py accelerate
+          python convert.py pcdn
 
       - name: 转换成 二进制规则文件
         run: |
           ./sing-box rule-set compile reject-list.json
           ./sing-box rule-set compile accelerate.json
+          ./sing-box rule-set compile pcdn.json
 
       - name: 发布
         run: |
@@ -58,6 +61,9 @@ jobs:
           
           cp ../accelerate.json accelerate.json
           cp ../accelerate.srs accelerate.srs
+
+          cp ../pcdn.json pcdn.json
+          cp ../pcdn.srs pcdn.srs
 
           git add .
           git commit -m "Released on ${{ env.BUILDTIME }}"
