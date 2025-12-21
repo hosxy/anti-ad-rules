@@ -3,11 +3,13 @@ mcdn.bilivideo.com
 mcdn.bilivideo.cn
 szbdyd.com
 
-# qq
+# 腾讯
 p2ptun.qq.com
 p2p.qq.com
 p2pupdate.gamedl.qq.com
 p2pupgrade.gamedl.qq.com
+tp2p.kg.qq.com
+stun.qqlive.qq.com
 
 # 斗鱼
 p2pchunk-hw.douyucdn.cn
@@ -20,9 +22,24 @@ p2plog.douyucdn.cn
 p2pvod-ws.douyucdn.cn
 stun.douyucdn.cn
 stun1.douyucdn.cn
+dyp2p-ali.douyucdn.cn
+dyp2p-hw.douyucdn.cn
 
 # 虎牙
 p2p.huya.com
 
 # 爱奇艺
 tpa-hcdn.iqiyi.com
+hcdn.qiyi.com
+pdata.video.qiyi.com
+cachecdn.v.iqiyi.com
+meta-cdn.video.iq.com
+tpa-hcdn.iqiyi.com
+
+# 网易云音乐
+sd-gl.xinqiucc.com
+xyp-n.kuiniuca.com
+sdk1xyajs.data.kuiniuca.com
+ac.dun.163.com
+fp-upload.dun.163.com
+
