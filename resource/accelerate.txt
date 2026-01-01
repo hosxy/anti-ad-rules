@@ -11,3 +11,4 @@ sourceware.org
 people.redhat.com
 wikichip.org
 speed.cloudflare.com
+artifacts.bitwarden.com
