@@ -1,0 +1,24 @@
+{
+  "version": 3,
+  "rules": [
+    {
+      "domain_suffix": [
+        "openwrt.org",
+        "phoronix.com",
+        "python.org",
+        "pypi.org",
+        "pythonhosted.org",
+        "rust-lang.org",
+        "crates.io",
+        "denx.de",
+        "gnu.org",
+        "sourceware.org",
+        "people.redhat.com",
+        "wikichip.org",
+        "speed.cloudflare.com",
+        "artifacts.bitwarden.com",
+        "hembed.com"
+      ]
+    }
+  ]
+}
