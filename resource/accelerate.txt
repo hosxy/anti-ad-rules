@@ -13,3 +13,4 @@ wikichip.org
 speed.cloudflare.com
 artifacts.bitwarden.com
 hembed.com
+duck.ai
