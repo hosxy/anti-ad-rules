@@ -18,3 +18,4 @@ chat.mozilla.org
 modular.im
 vector.im
 element.io
+vivaldi.net
