@@ -16,3 +16,4 @@ hembed.com
 duck.ai
 chat.mozilla.org
 modular.im
+vector.im
