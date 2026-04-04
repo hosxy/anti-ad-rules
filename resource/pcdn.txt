@@ -3,6 +3,7 @@ mcdn.bilivideo.com
 mcdn.bilivideo.cn
 szbdyd.com
 edge.mountaintoys.cn
+regexp:cn-.*\.bilivideo\.(com|cn)
 
 # 腾讯
 p2ptun.qq.com
