@@ -5,6 +5,7 @@ pypi.org
 pythonhosted.org
 rust-lang.org
 crates.io
+pub.dev
 denx.de
 gnu.org
 sourceware.org
