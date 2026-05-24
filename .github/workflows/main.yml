@@ -45,7 +45,7 @@ jobs:
           ls -al
           gzip -d mihomo.gz
           ls -al
-          mv mihomo-linux-amd64-compatible mihomo
+          
           sudo chmod a+x mihomo
           
 
