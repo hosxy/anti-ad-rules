@@ -51,8 +51,6 @@ jobs:
           python convert.py reject-list
           python convert.py accelerate
           python convert.py pcdn
-          ls -al
-          cat pcdn.yaml
 
       - name: 转换成srs二进制规则文件
         run: |
