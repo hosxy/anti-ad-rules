@@ -37,7 +37,7 @@ jobs:
           singbox_version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
           curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${singbox_version}/sing-box-${singbox_version}-linux-amd64.tar.gz"
           tar -xf sing-box.tgz
-          cp sing-box-${version}-linux-amd64/sing-box sing-box
+          cp sing-box-${singbox_version}-linux-amd64/sing-box sing-box
           sudo chmod a+x sing-box
 
           mihomo_version=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r .name)
