@@ -42,10 +42,7 @@ jobs:
 
           mihomo_version=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r .name)
           curl -L -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${mihomo_version}/mihomo-linux-amd64-compatible-${mihomo_version}.gz"
-          ls -al
           gzip -d mihomo.gz
-          ls -al
-          
           sudo chmod a+x mihomo
           
 
@@ -54,6 +51,8 @@ jobs:
           python convert.py reject-list
           python convert.py accelerate
           python convert.py pcdn
+          ls -al
+          cat pcdn.yaml
 
       - name: 转换成srs二进制规则文件
         run: |
@@ -65,7 +64,7 @@ jobs:
         run: |
           ./mihomo convert-ruleset domain yaml reject-list.yaml reject-list.mrs
           ./mihomo convert-ruleset domain yaml accelerate.yaml accelerate.mrs
-          ./mihomo convert-ruleset domain yaml pcdn.json pcdn.mrs
+          ./mihomo convert-ruleset domain yaml pcdn.yaml pcdn.mrs
           
       - name: 发布 srs
         run: |
