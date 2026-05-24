@@ -21,7 +21,12 @@ jobs:
         shell: bash
         run: |
           echo "BUILDTIME=$(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M')" >> $GITHUB_ENV
-          
+
+      - name: 安装依赖
+        shell: bash
+        run: |
+          pip install ruamel.yaml
+    
       - name: 下载
         run: |
           curl -L -o convert.py "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/convert.py"
@@ -29,11 +34,17 @@ jobs:
           curl -L -o accelerate.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/resource/accelerate.txt"
           curl -L -o pcdn.txt "https://raw.githubusercontent.com/hosxy/anti-ad-rules/master/resource/pcdn.txt"
 
-          version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
-          curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${version}/sing-box-${version}-linux-amd64.tar.gz"
+          singbox_version=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r .name)
+          curl -L -o sing-box.tgz "https://github.com/SagerNet/sing-box/releases/download/v${singbox_version}/sing-box-${singbox_version}-linux-amd64.tar.gz"
           tar -xf sing-box.tgz
           cp sing-box-${version}-linux-amd64/sing-box sing-box
           sudo chmod a+x sing-box
+
+          mihomo_version=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r .name)
+          curl -L -o mihomo.gz "https://github.com/SagerNet/sing-box/releases/download/${mihomo_version}/mihomo-linux-amd64-compatible-${mihomo_version}.gz"
+          tar -xf mihomo.gz
+          sudo chmod a+x mihomo-linux-amd64
+          
 
       - name: 转换成源文件格式
         run: |
@@ -41,13 +52,19 @@ jobs:
           python convert.py accelerate
           python convert.py pcdn
 
-      - name: 转换成 二进制规则文件
+      - name: 转换成srs二进制规则文件
         run: |
           ./sing-box rule-set compile reject-list.json
           ./sing-box rule-set compile accelerate.json
           ./sing-box rule-set compile pcdn.json
-
-      - name: 发布
+          
+      - name: 转换成mrs二进制规则文件
+        run: |
+          ./mihomo-linux-amd64 convert-ruleset domain yaml reject-list.yaml reject-list.mrs
+          ./mihomo-linux-amd64 convert-ruleset domain yaml accelerate.yaml accelerate.mrs
+          ./mihomo-linux-amd64 convert-ruleset domain yaml pcdn.json pcdn.mrs
+          
+      - name: 发布 srs
         run: |
           mkdir srs
           cd srs
@@ -69,3 +86,26 @@ jobs:
           git commit -m "Released on ${{ env.BUILDTIME }}"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin srs
+          
+      - name: 发布 mrs
+        run: |
+          mkdir mrs
+          cd mrs
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b mrs
+          
+          cp ../reject-list.yaml ad.yaml
+          cp ../reject-list.mrs ad.mrs
+          
+          cp ../accelerate.yaml accelerate.yaml
+          cp ../accelerate.mrs accelerate.mrs
+
+          cp ../pcdn.yaml pcdn.yaml
+          cp ../pcdn.mrs pcdn.mrs
+
+          git add .
+          git commit -m "Released on ${{ env.BUILDTIME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin mrs
