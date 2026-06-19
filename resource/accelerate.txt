@@ -20,3 +20,4 @@ modular.im
 vector.im
 element.io
 vivaldi.net
+assets1.xboxlive.com
