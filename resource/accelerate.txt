@@ -21,3 +21,4 @@ vector.im
 element.io
 vivaldi.net
 full:assets1.xboxlive.com
+full:xsts.auth.xboxlive.com
