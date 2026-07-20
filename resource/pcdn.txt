@@ -4,6 +4,7 @@ mcdn.bilivideo.cn
 szbdyd.com
 edge.mountaintoys.cn
 h2.smtcdns.net
+pcdn.biliapi.net
 
 # 腾讯
 p2ptun.qq.com
