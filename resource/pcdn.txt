@@ -29,8 +29,7 @@ dyp2p-ali.douyucdn.cn
 dyp2p-hw.douyucdn.cn
 
 # 虎牙
-#屏蔽此域名会导致直播卡顿
-#p2p.huya.com
+p2p.huya.com
 
 # 爱奇艺
 tpa-hcdn.iqiyi.com
