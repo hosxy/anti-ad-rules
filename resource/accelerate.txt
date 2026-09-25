@@ -20,3 +20,4 @@ vector.im
 element.io
 vivaldi.net
 whimsical.com
+sagernet.org
